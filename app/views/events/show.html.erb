@@ -1,0 +1,64 @@
+<section class="main">
+
+    <%if @movie_suggestions.present?%>
+    <%movie = @movie_suggestions.first.movie%>
+    <%puts "============================================================================"%>
+    <%puts movie.poster_url%>
+    <header class="header" style="background-image: url('<%=movie.poster_url%>')">
+    <%else%>
+    <header class="header">
+
+
+    <%end%>
+        <div class="info">
+            <h1> <%= @event.user.name + " Movienight"%></h1>
+            <h2>
+                <i class="material-icons">schedule</i>     
+                <%= "#{@event.time},#{@event.date}" %>
+            </h2>
+            <h2>
+                <i class="material-icons">room</i>
+                <%= @event.adress %>
+            </h2>
+        </div>
+    </header>
+
+<%= link_to addmovie_event_path() do%>
+    <div class="add_movie"><i class="material-icons">add</i> <p>Add Movie</p> </div>
+<% end %>
+    <div class="suggestion_list">
+    <%if @movie_suggestions.present?%>
+        <% @movie_suggestions.each_with_index do |suggestion, rank| %>
+        <% movie = suggestion.movie%>
+            <div class="listcard" style="background-image: url('<%=movie.poster_url%>')">
+                <%= link_to details_event_path()+"#"+rank.to_s, :class=>"listcard__link" do%> 
+                    <%if rank==0 %>
+                        <span class="listcard__rank listcard__rank--first">
+                    <%else%>
+                        <span class="listcard__rank">
+                    <%end%>
+                            <%=rank+1 %>
+                        </span>
+                <%end%>
+            </div>
+        <% end %>
+    <%else%>
+        <p>No Movies suggested yet</p>
+    <%end%>
+    </div>
+</section>
+<nav class="bottom_nav">
+    <%= link_to event_path(), :class=>"bottom_nav__link bottom_nav__link--active" do%>
+        <i class="material-icons bottom_nav__icon">assessment</i>
+        <span class="bottom_nav__text bottom_nav__text--active">Ranking</span>
+    <%end%>
+    <%= link_to details_event_path(), :class=>"bottom_nav__link" do%>
+        <i class="material-icons">theaters</i>
+        <span class="bottom_nav__text">Details</span>
+    <%end%>
+    <%= link_to organisation_event_path(), :class=>"bottom_nav__link" do%>    
+        <i class="material-icons">assignment</i>
+        <span class="bottom_nav__text">Organisation</span>
+    <%end%>
+</nav>
+

@@ -1,0 +1,34 @@
+
+<div class="invite">
+
+    <h2><%= @event.user.name + " Movienight" %></h2>
+
+      <% if user_signed_in? %>
+        <h4> Wilkommen, du kannst der MovieNight beitreten </h4>
+      <% else %>
+            <h4>Um der MovieNight beizutreten, musst du dich zuerst anmelden:</h4>
+
+            <div class="invite__auth">
+                <%= link_to 'Register', new_user_registration_path %>
+                <%= link_to 'Sign in', new_user_session_path %>
+            </div>
+      <% end %>
+
+
+</div>
+
+<% if user_signed_in? %>
+<nav class="bottom_nav bottom_nav--add">
+    <%= link_to invite_event_path(access: 'true'), :class=>"bottom_nav__link bottom_nav__link--active" do%>    
+        <i class="material-icons">playlist_add</i>
+        <span class="bottom_nav__text">Der Movie Night beitreten</span>
+    <%end%>
+</nav>
+<% else %>
+<nav class="bottom_nav bottom_nav--add">
+    <a href="#" class="bottom_nav__link bottom_nav__link">  
+        <i class="material-icons">playlist_add</i>
+        <span class="bottom_nav__text">Logge dich ein, um der MovieNight beizutreten</span>
+    </a>
+</nav>
+<% end %>

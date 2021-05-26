@@ -1,0 +1,53 @@
+<%= form_with url: addmovie_event_path(), method: :get, local: true do |f| %>
+    <%= f.label :search, "Filmsuche - ENTER zum Bestätigen"%>
+    <%= f.text_field :search %>
+<% end %>
+
+<% @request_hash %>
+
+<% if !@request_hash.nil? %>
+    <%= form_with url: addmovie_event_path(), method: :get, local: true do |f| %>
+            <% @request_hash["Search"]&.each do |movie| %>
+
+        <div class="addmovie_field">
+
+            <%= f.radio_button :movie, movie["imdbID"]%>
+            <%= f.label :movie, id: movie["imdbID"], :for => "movie_#{movie["imdbID"]}", onclick: "MarkSelection(#{movie["imdbID"]});" do %>
+                <img src="<%= movie["Poster"] %>" alt="Poster"/>
+                <span>
+                <h3> <%= movie["Title"] %> </h3>
+                <p><%= movie["Year"] %> </p>
+                <span>
+            <% end %>
+        </div>
+
+            <% end %>
+            <%= f.submit "Add Movie", :class=>"bottom_nav bottom_nav--add"%>
+    <% end %>
+<% end %>
+
+<% if !@the_movie.nil? %>
+<%= @the_movie %>
+<% end %>
+
+<script>
+    function MarkSelection(imdbId){
+            console.log(imdbId)
+
+            const labels = document.querySelectorAll("label")
+
+            for(let label of labels){
+                label.style.border = "none";
+            }
+
+            
+            imdbId.style.borderBottomStyle= "solid";
+            imdbId.style.borderBottomColor= "white";
+            imdbId.style.borderBottomWidth="thick";
+
+            imdbId.style.borderTopStyle= "solid";
+            imdbId.style.borderTopColor= "white";
+            imdbId.style.borderTopWidth="thick";
+
+    }
+</script>

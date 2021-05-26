@@ -1,0 +1,22 @@
+
+
+<%= form_for @event do |e| %>
+    <div class="field">
+        <%= e.label :adress %>
+        <%= e.text_field :adress, :required => true %>
+    </div>
+    <div class="field">
+        <%= e.label :date %>
+        <%= e.date_field :date, :required => true %>
+    </div>
+    <div class="field">
+        <%= e.label :time %>
+        <%= e.time_field :time , :required => true %>
+    </div>
+
+    <%= e.hidden_field :user_id, :value => current_user.id%>
+
+    <div>
+        <%= e.submit "Create Movie Night", :class=>"bottom_nav bottom_nav--add" %>
+    </div>
+<% end %>

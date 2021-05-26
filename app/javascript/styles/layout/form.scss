@@ -1,0 +1,41 @@
+form{
+    margin: auto;
+    margin-top: 50px;
+    max-width: 500px;
+    width: 80%;
+    color: white;
+
+    label{
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+
+    .field{
+        display: flex;
+        flex-direction: column;
+    }
+
+    input[type= text], input[type= email], input[type=password]{
+        background-color: $dark-grey;
+        height: 30px;
+        color: white;
+    }
+
+    .bottom_nav--add{
+        cursor: pointer;
+        color: white;
+        width: 100%;
+        left: 0;
+        border: none;
+        font-size: 1.5rem;
+    }
+
+    .addmovie_field{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    #search{
+        width: 100%;
+    }
+}

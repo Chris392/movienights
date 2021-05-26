@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>Movie Nights</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application'%>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%= favicon_link_tag asset_path('favicon.ico') %>
+
+  </head>
+
+  <header>
+
+    <% flash.each do |name, msg| %>
+      <%puts "=========================================="%>
+      <%puts name%>
+      <%puts msg%>
+          <div class="notice notice--<%=name%>">
+              <%=msg%>
+          </div>
+    <%end%>
+
+    <nav class="top_nav">
+      <span class="top_nav__home">
+        <%= link_to "/" do %>
+            <i class="material-icons top_nav__icon">arrow_back_ios</i>
+        <% end %>
+        <%= link_to events_path() do%>
+        <h1 class="top_nav__name brand"> MovieNights </h1>
+        <% end %>
+      </span>
+          <% if user_signed_in? %>
+            <div class="top_nav__logout">
+              <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+            </div>
+          <% else %>
+
+            <div class="top_nav__signin">
+                <%= link_to 'Register', new_user_registration_path, :class => "top_nav__register"%>
+                <%= link_to 'Sign in', new_user_session_path %>
+            </div>
+          <% end %>
+    </nav>
+  </header>
+
+  <body>
+
+
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+.header{
+    width: 100vw;
+    height: 35vh;
+    background-size: cover;
+    box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 7vw 7vw 7vw 7vw;
+}
+
+@media only screen and (min-width: 800px){
+    .main{
+        max-width: 60vw;
+        margin: 0 20vw 0 20vw;
+    }
+    .header{
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+    .bottom_nav{
+        padding: 0 10vw 0 10vw;
+    }
+}
+
+.info h1{
+    margin-bottom: 10px;
+}
+
+.info h2{
+    color: white;
+    margin-bottom: 30px;
+}

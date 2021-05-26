@@ -1,0 +1,14 @@
+.notice{
+    width: 80vw;
+    margin: auto;
+    padding: 15px;
+
+    &--success{
+        background-color: rgb(218, 255, 163);
+        color: rgb(48, 80, 0);
+    }
+    &--notice{
+        background-color: rgb(255, 221, 163);
+        color: rgb(168, 123, 9);
+    }
+}

@@ -1,0 +1,56 @@
+.top_nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90vw;
+    min-width: 50px;
+    margin: 5vw;
+    top: 0;
+    z-index: 10;
+
+    &__home{
+        display: flex;
+        flex-direction: row;
+        vertical-align: middle;
+    }
+
+    &__icon{
+        color: white;
+        cursor: pointer;
+    }
+    &__name{
+        font-size: 1.4rem;
+    }
+
+
+
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    
+
+    &__signin{
+        width: 100%;
+        float: right;
+        display: flex;
+        flex-direction: row-reverse;
+        margin-right: 20px;
+            a{
+                text-decoration: none;
+                color: white;
+            }
+    }
+
+    &__register{
+        margin-left: 20px;
+    }
+
+
+}
+
+.ranking{
+    margin-left: -2.5vw;
+}
+
+

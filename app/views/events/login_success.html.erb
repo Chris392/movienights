@@ -1,0 +1,13 @@
+<div class="invite">
+
+    <h2> Glückwunsch! Deine MovieNight wurde erfolgreich erstellt!</h2>
+
+    <h4> Über folgenden Invitation-Link kannst du deine Freunde einladen: </h4>
+
+    <input type="text" class="invite__url" value="https://movienights.projects.multimediatechnology.at/<%= invite_event_path() %>">
+
+    <%= link_to event_path(), :class=>"invite__link" do%>    
+        <p>Zum Homescreen</p>
+    <%end%>
+
+</div>

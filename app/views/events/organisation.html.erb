@@ -1,0 +1,45 @@
+
+
+    <div class="info2">
+        <h4> Admin des Events: </h4>
+        <p>
+            <%= @owner.name %> 
+        </p>
+        <h4> Datum und Uhrzeit des Events: </h4>
+        <p>
+            <%=@event.date%>
+            <%=@event.time%>
+        </p>
+        <h4> Ort des Events: </h4>
+        <p>
+            <%=@event.adress%>
+        </p>
+
+        <h4>Teilnehmer:</h4>
+        <div class="info__participants">
+            <%@participants.each do |p| %>
+            <p> <%= p.name %> </p>
+            <%end%>
+        </div>
+
+        <h4>Einladungs-Link:</h4>
+
+        <input type="text" class="invite__url" value="https://movienights.projects.multimediatechnology.at/<%= invite_event_path() %>">
+
+    </div>
+
+</section>
+<nav class="bottom_nav">
+    <%= link_to event_path(), :class=>"bottom_nav__link" do%>
+        <i class="material-icons bottom_nav__icon">assessment</i>
+        <span class="bottom_nav__text bottom_nav__text--active">Ranking</span>
+    <%end%>
+    <%= link_to details_event_path(), :class=>"bottom_nav__link" do%>
+        <i class="material-icons">theaters</i>
+        <span class="bottom_nav__text">Details</span>
+    <%end%>
+    <%= link_to organisation_event_path(), :class=>"bottom_nav__link bottom_nav__link--active" do%>   
+        <i class="material-icons">assignment</i>
+        <span class="bottom_nav__text">Organisation</span>
+    <%end%>
+</nav>

@@ -1,0 +1,42 @@
+
+  <div class="event_container">
+    <%if @events.present?%>
+    <% @events.each do |event| %>
+      <%= link_to event_path(event), :class=>'event__link' do %>
+        <div class="event">
+          <!-- <div class="event__host">
+              <img src="./assets/sgratkx3xj731.png" alt="hostpic">
+          </div> -->
+          <div class="event__info">
+              <h3 class="event__name"><%= event.user.name + " Movienight"%></h3>
+              <div class="event__detail">
+                  <span class="event__time"> <i class="material-icons"> query_builder </i> <%= event.time %> </span>
+                  <span class="event__date"> <i class="material-icons"> event </i> <%= event.date.strftime("%d.%m") %> </span>
+              </div>
+          </div>
+              <i class="big material-icons big">keyboard_arrow_right</i>
+        </div>
+      <% end %>
+    <% end %>
+    <%else%>
+      <p>
+        You arent invited to any MovieNights ye, either add a new one or join one via an invite link
+      </p>
+    <%end%>
+  </div>
+
+<% if user_signed_in? %>
+<nav class="bottom_nav bottom_nav--add">
+    <%= link_to new_event_path(), :class=>"bottom_nav__link bottom_nav__link--active" do%>    
+        <i class="material-icons">playlist_add</i>
+        <span class="bottom_nav__text">Add Movie Night</span>
+    <%end%>
+</nav>
+<% else %>
+<nav class="bottom_nav bottom_nav--add">
+    <a href="#" class="bottom_nav__link bottom_nav__link">  
+        <i class="material-icons">playlist_add</i>
+        <span class="bottom_nav__text">Login to Add Movie Night</span>
+    </a>
+</nav>
+<% end %>

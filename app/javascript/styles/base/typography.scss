@@ -1,0 +1,43 @@
+a{
+    color: rgb(255, 0, 0);
+}
+
+h1{
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: $heading-font;
+}
+
+h2{
+    color: white;
+    font-size: 2rem;
+    font-family: $heading-font;
+}
+
+h3{
+    color: white;
+    font-weight: bold;
+    font-family: $heading-font;
+}
+h4{
+    color: $akzent;
+    font-weight: bold;
+    font-family: $heading-font;
+}
+.brand{
+    font-family: $brand-font;
+}
+p{
+    font-family: $main-font;
+    color: white;
+}
+
+.message{
+    color: green !important;
+    padding-top: 3px;
+    padding-left: 15px;
+}
+
+
+

@@ -1,0 +1,78 @@
+<section class="main">
+
+<%= link_to addmovie_event_path() do%>
+    <div class="add_movie"><i class="material-icons">add</i> <p>Add Movie</p></div>
+<% end %>
+
+
+
+    <div class="detail_list">
+    <%if @movie_suggestions.present?%>
+        <% @movie_suggestions.each_with_index do |suggestion, rank| %>
+        <% movie = suggestion.movie%>
+            <div class="moviecard" id="<%=rank%>">
+                <h3 class="moviecard__rank">Platz <%=rank+1%></h3>
+                <div class="moviecard__background">
+                    <img class="moviecard__media" src="<%=movie.poster_url%>" alt="<%=movie.title%> poster">
+                    <div class="moviecard__content">
+                        <p class="moviecard__time"><%=movie.runtime%> min.</p>
+                        <h1 class="moviecard__title"><%=movie.title%></h1>
+                        <p class="moviecard__data"><%=movie.genre%></p>
+                        <p class="moviecard__short_description moviecard__shortdescription--visible"><%=movie.plot%></p> 
+                        <div class="moviecard__extended moviecard__extended--invisible">
+                            <p class="moviecard__long_description"><%=movie.plot%></p>
+                            <p class="moviecard__directors"><%=movie.director%></p>
+                            <p class="moviecard__actors"><%=movie.actors%></p>
+                        </div>
+                        <div class="vote">
+                            <%= link_to upvote_movie_suggestion_path(suggestion), method: :put, remote: true do %>
+                                <% if current_user.voted_up_on? suggestion %>
+                                    <span class="material-icons vote__upvote--active">
+                                        thumb_up_off_alt
+                                    </span>
+                                <% else %>
+                                    <span class="material-icons vote__upvote">
+                                        thumb_up_off_alt
+                                    </span>
+                                <% end %>
+                            <% end %>
+                            <%= link_to  downvote_movie_suggestion_path(suggestion), method: :put, remote: true do%>
+                                <% if current_user.voted_down_on? suggestion %>
+                                    <span class="material-icons vote__downvote--active">
+                                        thumb_down_off_alt
+                                    </span>
+                                <% else %>
+                                    <span class="material-icons vote__downvote">
+                                        thumb_down_off_alt
+                                    </span>
+                                <% end %>
+                            <% end %>
+                            <p class="vote__number_downvotes"><%= suggestion.weighted_score %></p>
+                        </div>
+                    </div>
+                    <div class="moviecard__folder moviecard__folder--upfolded">AUSKLAPPEN</div>
+                </div>
+            </div>
+        <% end %>
+    <%else%>
+        <p>No Movies suggested yet</p>
+    <% end %>
+    </div>
+
+
+
+</section>
+<nav class="bottom_nav">
+    <%= link_to event_path(), :class=>"bottom_nav__link" do%>
+        <i class="material-icons bottom_nav__icon">assessment</i>
+        <span class="bottom_nav__text bottom_nav__text--active">Ranking</span>
+    <%end%>
+    <%= link_to details_event_path(), :class=>"bottom_nav__link  bottom_nav__link--active" do%>
+        <i class="material-icons">theaters</i>
+        <span class="bottom_nav__text">Details</span>
+    <%end%>
+    <%= link_to organisation_event_path(), :class=>"bottom_nav__link" do%>   
+        <i class="material-icons">assignment</i>
+        <span class="bottom_nav__text">Organisation</span>
+    <%end%>
+</nav>
